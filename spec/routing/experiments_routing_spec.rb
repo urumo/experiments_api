@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ExperimentsController, type: :routing do
+RSpec.describe ExperimentsController do
   describe 'routing' do
     it 'routes to #index' do
       expect(get: '/experiments').to route_to('experiments#index')

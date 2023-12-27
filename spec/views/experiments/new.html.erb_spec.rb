@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe 'experiments/new', type: :view do
-  before(:each) do
+RSpec.describe 'experiments/new' do
+  before do
     assign(:experiment, Experiment.new(
                           key: 'MyString',
                           value: 'MyString',

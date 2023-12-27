@@ -18,14 +18,12 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows]
   gem 'faker', '~> 3.2'
   gem 'rspec-rails', '~> 6.1'
-  gem 'rubocop', '~> 1.59'
-  gem "rubocop-rails", "~> 2.23", require: true
-  gem "rubocop-rspec", "~> 2.25", require: true
+  gem 'rubocop', '1.57.2'
+  gem 'rubocop-rails', '2.22.2'
+  gem 'rubocop-rspec', '2.25.0'
 end
 group :development do
   gem 'rack-mini-profiler'
   gem 'spring'
   gem 'web-console'
 end
-
-

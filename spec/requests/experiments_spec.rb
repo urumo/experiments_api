@@ -14,7 +14,7 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe '/experiments', type: :request do
+RSpec.describe '/experiments' do
   # This should return the minimal set of attributes required to create a valid
   # Experiment. As you add validations to Experiment, be sure to
   # adjust the attributes here as well.
@@ -75,7 +75,7 @@ RSpec.describe '/experiments', type: :request do
       it 'does not create a new Experiment' do
         expect do
           post experiments_url, params: { experiment: invalid_attributes }
-        end.to change(Experiment, :count).by(0)
+        end.not_to change(Experiment, :count)
       end
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do

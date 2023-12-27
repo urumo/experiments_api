@@ -33,4 +33,8 @@ Metrics/CyclomaticComplexity:
 Style/Documentation:
   Enabled: false
 
+RSpec/MultipleExpectations:
+  Max: 5
 
+RSpec/ExampleLength:
+  Max: 20

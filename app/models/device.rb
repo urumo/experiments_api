@@ -7,14 +7,16 @@ class Device < ApplicationRecord
   # alias experiments device_experiments
 
   scope :with_user, -> { where.not(user_id: nil) }
+  scope :without_user, -> { where(user_id: nil) }
   scope :with_experiments, -> { joins(:device_experiments).distinct }
+  scope :without_experiments, -> { where.missing(:device_experiments) }
 
   after_create :create_device_experiments
 
   private
 
   def create_device_experiments
-    Experiment.all.each do |experiment|
+    Experiment.find_each do |experiment|
       device_experiments.create(experiment:)
     end
   end

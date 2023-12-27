@@ -7,7 +7,7 @@ class UuidAsPk < ActiveRecord::Migration[7.1]
 
     reversible do |dir|
       dir.up do
-        execute <<-SQL
+        execute <<-SQL.squish
           CREATE EXTENSION IF NOT EXISTS "pgcrypto";
           CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
         SQL

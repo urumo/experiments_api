@@ -2,10 +2,10 @@
 
 class User < ApplicationRecord
   has_secure_password
-  has_many :devices
+  has_many :devices, dependent: :nullify
 
   scope :with_devices, -> { joins(:devices).distinct }
-  scope :without_devices, -> { left_outer_joins(:devices).where(devices: { id: nil }) }
+  scope :without_devices, -> { where.missing(:devices) }
 
   enum role: { user: 0, admin: 1 }
 

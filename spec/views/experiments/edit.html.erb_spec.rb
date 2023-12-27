@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'experiments/edit', type: :view do
+RSpec.describe 'experiments/edit' do
   let(:experiment) do
     Experiment.create!(
       key: 'MyString',
@@ -11,7 +11,7 @@ RSpec.describe 'experiments/edit', type: :view do
     )
   end
 
-  before(:each) do
+  before do
     assign(:experiment, experiment)
   end
 
