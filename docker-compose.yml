@@ -1,0 +1,81 @@
+version: '3.9'
+
+x-rails-env: &rails-env
+  REDIS_URL: "redis://redis:6379/0"
+  DATABASE_URL: "postgres://postgres:Passw0rd@db:5432/experiments_db"
+  SECRET_KEY_BASE_DUMMY: 1
+
+x-rails-app: &rails-app
+  platform: linux/x86_64 # to be able to run virtually everywhere
+  image: ghcr.io/urumo/experiments_api/experiments_api:latest
+  build:
+    context: .
+    dockerfile: Dockerfile
+  restart: unless-stopped
+  tty: true
+  stdin_open: true
+  environment:
+    <<: *rails-env
+  depends_on:
+    - db
+    - redis
+
+
+services:
+  rails:
+    <<: *rails-app
+    command: bundle exec rails s
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/up" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+        delay: 10s
+      rollback_config:
+        parallelism: 1
+        order: stop-first
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    command:
+      - 'redis-server'
+      - '--loglevel ${REDIS_LOGLEVEL:-warning}'
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli ping | grep PONG" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  db:
+    image: postgres:alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Passw0rd
+      POSTGRES_DB: experiments_db
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-d", "svck" ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - 'db:/var/lib/postgresql/data'
+
+volumes:
+  db:
