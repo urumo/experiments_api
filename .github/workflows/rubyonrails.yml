@@ -20,7 +20,7 @@ jobs:
         with:
           bundler-cache: true
       - name: Lint Ruby files
-        run: bin/rubocop --parallel
+        run: bundle exec rubocop --parallel
   test:
     runs-on: ubuntu-latest
     services:
@@ -46,7 +46,7 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
       - name: Run tests
-        run: bundle exec rspec    
+        run: bundle exec rspec
   build_and_deploy:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
