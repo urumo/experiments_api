@@ -10,7 +10,56 @@
 </head>
 
 <body>
-<%= yield %>
+<nav class="tui-nav main-nav">
+  <ul>
+    <li class="tui-dropdown">
+      <span class="red-168-text">L</span>inks
+      <div class="tui-dropdown-content">
+        <ul>
+          <li>
+            <a href="<%= root_path %>"><span class="red-168-text">H</span>ome</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <% if session[:user_id].present? %>
+      <li class="tui-dropdown">
+        <span class="red-168-text"><%= current_user.email[0] %></span><%= current_user.email[1..] %>
+        <div class="tui-dropdown-content">
+          <ul>
+            <li>
+              <%= link_to raw('<span class="red-168-text">L</span>og Out'), logout_path %>
+            </li>
+          </ul>
+        </div>
+      </li>
+    <% else %>
+      <li v-else class="tui-dropdown">
+        <span class="red-168-text">I</span>dentity
+        <div class="tui-dropdown-content">
+          <ul>
+            <li><a href="<%= authenticate_path %>"><span class="red-168-text">S</span>ign In</a></li>
+          </ul>
+        </div>
+      </li>
+    <% end %>
+    <span class="tui-datetime" data-format="h:m:s a"></span>
+  </ul>
+</nav>
+
+<div class="tui-bg-blue-white main-body">
+  <%= yield %>
+</div>
+
+<div class="tui-statusbar">
+  <ul>
+    <li><span class="red-168-text">s</span>vck.dev</li>
+    <span class="tui-statusbar-divider"></span>
+    <li><span class="red-168-text">e</span>xperiments api</li>
+    <span class="tui-statusbar-divider"></span>
+    <li><span class="red-168-text"><%= @year[0] %></span><%= @year[1..] %></li>
+  </ul>
+</div>
 </body>
 
 <script type=application/javascript>

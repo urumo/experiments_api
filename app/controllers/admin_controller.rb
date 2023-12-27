@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 class AdminController < ApplicationController
-  def index
-  end
+  before_action :authenticate_user!, except: %i[authenticate create_user]
+  def index; end
 
-  def authenticate
-  end
+  def authenticate; end
 
-  def create_user
+  def create_user; end
+
+  def logout
+    reset_session
   end
 end

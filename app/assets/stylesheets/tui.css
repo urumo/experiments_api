@@ -1266,7 +1266,7 @@ input[type=button] {
 }
 
 ::-webkit-scrollbar-track {
-    background-image: url(images/scroll-cyan.png);
+    background-image: url("images/scroll-cyan.png");
     background-repeat: repeat;
 }
 
@@ -1278,10 +1278,6 @@ input[type=button] {
     background-color: rgb(0, 168, 168);
 }
 
-/* Styles */
-.tui-scroll-blue ::-webkit-scrollbar-track {
-    background-image: url(images/scroll-blue.png);
-}
 .tui-scroll-blue ::-webkit-scrollbar-thumb {
     background-color: rgb(0, 0, 168);
 }
@@ -1289,9 +1285,6 @@ input[type=button] {
     background-color: rgb(0, 0, 168);
 }
 
-.tui-scroll-green ::-webkit-scrollbar-track {
-    background-image: url(images/scroll-green.png);
-}
 .tui-scroll-green ::-webkit-scrollbar-thumb {
     background-color: rgb(0, 168, 0);
 }
@@ -1299,9 +1292,6 @@ input[type=button] {
     background-color: rgb(0, 168, 0);
 }
 
-.tui-scroll-cyan ::-webkit-scrollbar-track {
-    background-image: url(images/scroll-cyan.png);
-}
 .tui-scroll-cyan ::-webkit-scrollbar-thumb {
     background-color: rgb(0, 168, 168);
 }
@@ -1309,9 +1299,6 @@ input[type=button] {
     background-color: rgb(0, 168, 168);
 }
 
-.tui-scroll-red ::-webkit-scrollbar-track {
-    background-image: url(images/scroll-red.png);
-}
 .tui-scroll-red ::-webkit-scrollbar-thumb {
     background-color: rgb(168, 0, 0);
 }
@@ -1319,9 +1306,6 @@ input[type=button] {
     background-color: rgb(168, 0, 0);
 }
 
-.tui-scroll-purple ::-webkit-scrollbar-track {
-    background-image: url(images/scroll-purple.png);
-}
 .tui-scroll-purple ::-webkit-scrollbar-thumb {
     background-color: rgb(168, 0, 168);
 }
@@ -1329,9 +1313,6 @@ input[type=button] {
     background-color: rgb(168, 0, 168);
 }
 
-.tui-scroll-yellow ::-webkit-scrollbar-track {
-    background-image: url(images/scroll-yellow.png);
-}
 .tui-scroll-yellow ::-webkit-scrollbar-thumb {
     background-color: rgb(168, 168, 0);
 }
@@ -1339,9 +1320,6 @@ input[type=button] {
     background-color: rgb(168, 168, 0);
 }
 
-.tui-scroll-white ::-webkit-scrollbar-track {
-    background-image: url(images/scroll-white.png);
-}
 .tui-scroll-white ::-webkit-scrollbar-thumb {
     background-color: rgb(168, 168, 168);
 }
@@ -1685,74 +1663,10 @@ input[type=button] {
 }
 
 .tui-bg-blue-white {
-    background-image: url("./images/bg-blue-white.png");
+    background-image: url("images/bg-blue-white.png");
     background-repeat: repeat;
 }
 
-.tui-bg-blue-black {
-    background-image: url("./images/bg-blue-black.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-green-white {
-    background-image: url("./images/bg-green-white.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-green-black {
-    background-image: url("./images/bg-green-black.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-cyan-white {
-    background-image: url("./images/bg-cyan-white.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-cyan-black {
-    background-image: url("./images/bg-cyan-black.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-red-white {
-    background-image: url("./images/bg-red-white.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-red-black {
-    background-image: url("./images/bg-red-black.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-purple-white {
-    background-image: url("./images/bg-purple-white.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-purple-black {
-    background-image: url("./images/bg-purple-black.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-yellow-white {
-    background-image: url("./images/bg-yellow-white.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-yellow-black {
-    background-image: url("./images/bg-yellow-black.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-orange-white {
-    background-image: url("./images/bg-orange-white.png");
-    background-repeat: repeat;
-}
-
-.tui-bg-orange-black {
-    background-image: url("./images/bg-orange-black.png");
-    background-repeat: repeat;
-}
 
 .tui-border-solid {
     border-style: solid !important;

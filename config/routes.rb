@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'admin/index'
-  get 'admin/authenticate'
-  get 'admin/create_user'
+  scope :admin do
+    get '/', to: 'admin#index'
+    get '/logout', to: 'admin#logout'
+    match '/authenticate', to: 'admin#authenticate', via: %i[get post]
+    match '/create_user', to: 'admin#create_user', via: %i[get post]
+  end
   resources :experiments
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
   get 'up' => 'rails/health#show', as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
+  root 'admin#index'
 end
