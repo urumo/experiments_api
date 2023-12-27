@@ -48,6 +48,7 @@ jobs:
       - name: Run tests
         run: bundle exec rspec
   build_and_deploy:
+    needs: [lint, test]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
@@ -61,7 +62,7 @@ jobs:
       - name: Build and push Docker image
         run: |
           time=$(date +%s)
-          docker build . --file Dockerfile --tag ghcr.io/${{ github.repository }}/${{ github.repository }}:$time
-          docker push ghcr.io/${{ github.repository }}/${{ github.repository }}:$time
-          docker tag ghcr.io/${{ github.repository }}/${{ github.repository }}:$time ghcr.io/${{ github.repository }}/${{ github.repository }}:latest
-          docker push ghcr.io/${{ github.repository }}/${{ github.repository }}:latest
+          docker build . --file Dockerfile --tag ghcr.io/${{ github.repository }}/experiments_api:$time
+          docker push ghcr.io/${{ github.repository }}/experiments_api:$time
+          docker tag ghcr.io/${{ github.repository }}/experiments_api:$time ghcr.io/${{ github.repository }}/experiments_api:latest
+          docker push ghcr.io/${{ github.repository }}/experiments_api:latest
