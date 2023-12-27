@@ -1,1 +1,3 @@
-json.array! @experiments, partial: "experiments/experiment", as: :experiment
+# frozen_string_literal: true
+
+json.array! @experiments, partial: 'experiments/experiment', as: :experiment

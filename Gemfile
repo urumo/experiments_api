@@ -16,11 +16,16 @@ gem 'sprockets-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]
+  gem 'faker', '~> 3.2'
   gem 'rspec-rails', '~> 6.1'
   gem 'rubocop', '~> 1.59'
+  gem "rubocop-rails", "~> 2.23", require: true
+  gem "rubocop-rspec", "~> 2.25", require: true
 end
 group :development do
   gem 'rack-mini-profiler'
   gem 'spring'
   gem 'web-console'
 end
+
+

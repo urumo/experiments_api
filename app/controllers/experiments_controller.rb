@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ExperimentsController < ApplicationController
-  before_action :set_experiment, only: %i[ show edit update destroy ]
+  before_action :set_experiment, only: %i[show edit update destroy]
 
   # GET /experiments or /experiments.json
   def index
@@ -7,8 +9,7 @@ class ExperimentsController < ApplicationController
   end
 
   # GET /experiments/1 or /experiments/1.json
-  def show
-  end
+  def show; end
 
   # GET /experiments/new
   def new
@@ -16,8 +17,7 @@ class ExperimentsController < ApplicationController
   end
 
   # GET /experiments/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /experiments or /experiments.json
   def create
@@ -25,7 +25,7 @@ class ExperimentsController < ApplicationController
 
     respond_to do |format|
       if @experiment.save
-        format.html { redirect_to experiment_url(@experiment), notice: "Experiment was successfully created." }
+        format.html { redirect_to experiment_url(@experiment), notice: 'Experiment was successfully created.' }
         format.json { render :show, status: :created, location: @experiment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ExperimentsController < ApplicationController
   def update
     respond_to do |format|
       if @experiment.update(experiment_params)
-        format.html { redirect_to experiment_url(@experiment), notice: "Experiment was successfully updated." }
+        format.html { redirect_to experiment_url(@experiment), notice: 'Experiment was successfully updated.' }
         format.json { render :show, status: :ok, location: @experiment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class ExperimentsController < ApplicationController
     @experiment.destroy!
 
     respond_to do |format|
-      format.html { redirect_to experiments_url, notice: "Experiment was successfully destroyed." }
+      format.html { redirect_to experiments_url, notice: 'Experiment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_experiment
-      @experiment = Experiment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def experiment_params
-      params.require(:experiment).permit(:key, :value, :chance)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_experiment
+    @experiment = Experiment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def experiment_params
+    params.require(:experiment).permit(:key, :value, :chance)
+  end
 end

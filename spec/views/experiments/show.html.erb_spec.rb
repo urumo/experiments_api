@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "experiments/show", type: :view do
+RSpec.describe 'experiments/show', type: :view do
   before(:each) do
     assign(:experiment, Experiment.create!(
-      key: "Key",
-      value: "Value",
-      chance: 2.5
-    ))
+                          key: 'Key',
+                          value: 'Value',
+                          chance: 2.5
+                        ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Key/)
     expect(rendered).to match(/Value/)
