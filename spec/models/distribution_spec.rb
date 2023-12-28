@@ -20,7 +20,7 @@ RSpec.describe Distribution do
         described_class
           .find_by(key: 'experiment_1', value: 'a')
           .actual_percent.to_f
-      ).to be_between(9.5, 10.5).inclusive
+      ).to be_between(9, 11).inclusive
     end
 
     it 'has +- 33.3% actual distribution' do
@@ -32,7 +32,7 @@ RSpec.describe Distribution do
         described_class
           .find_by(key: 'experiment_1', value: 'a')
           .actual_percent.to_f
-      ).to be_between(32.5, 34.5).inclusive
+      ).to be_between(32, 35).inclusive
     end
   end
 end

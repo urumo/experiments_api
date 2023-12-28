@@ -1,6 +1,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: <%= ENV.fetch('DB_USERNAME', '') %>
+  password: <%= ENV.fetch('DB_PASSWORD', '') %>
+  host: <%= ENV.fetch('DB_HOST', 'localhost') %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
@@ -8,6 +11,6 @@ development:
   database: experimental_api_development
 test:
   <<: *default
-  database: experimental_api_test
+  database: experimental_api_test<%= ENV.fetch('TEST_ENV_NUMBER', '2') %>
 production:
   url: <%= ENV["EXPERIMENTAL_DB"] %>

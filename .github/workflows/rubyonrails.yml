@@ -44,9 +44,11 @@ jobs:
         with:
           bundler-cache: true
       - name: Set up database schema
-        run: bin/rails db:schema:load
+        run: |
+          bundle exec rails parallel:create
+          bundle exec rails parallel:prepare
       - name: Run tests
-        run: bundle exec rspec
+        run: bundle exec rails parallel:spec
   build_and_deploy:
     needs: [lint, test]
     runs-on: ubuntu-latest
