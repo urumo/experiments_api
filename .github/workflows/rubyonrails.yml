@@ -37,6 +37,7 @@ jobs:
       DB_USERNAME: rails
       DB_PASSWORD: password
       DB_HOST: localhost
+      CI_ENV: github-actions
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
