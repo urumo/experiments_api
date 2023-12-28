@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :experiments
   get 'up' => 'rails/health#show', as: :rails_health_check
   root 'admin#index'
+  mount Api::Engine, at: '/api'
 end

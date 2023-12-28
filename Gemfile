@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '> 3.0.0'
 
+gem 'api', path: 'vendor/Api'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', require: false
 gem 'jbuilder'
