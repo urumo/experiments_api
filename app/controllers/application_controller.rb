@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html { render template: 'error/error', status: :internal_server_error }
       format.json do
-        render json: { error: }, status: :internal_server_error
+        render json: { error: { error_type: @error.first, error_message: @error[1], error_backtrace: @error.last } },
+               status: :internal_server_error
       end
     end
   end

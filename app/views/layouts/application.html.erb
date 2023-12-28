@@ -18,7 +18,8 @@
       <div class="tui-dropdown-content">
         <ul>
           <li>
-            <a href="<%= root_path %>"><span class="red-168-text"><%= I18n.t('labels.home')[0] %></span><%= I18n.t('labels.home')[1..] %></a>
+            <a href="<%= root_path %>"><span class="red-168-text"><%= I18n.t('labels.home')[0] %></span><%= I18n.t('labels.home')[1..] %>
+            </a>
           </li>
         </ul>
       </div>
@@ -39,7 +40,9 @@
         <span class="red-168-text"><%= I18n.t('labels.identity')[0] %></span><%= I18n.t('labels.identity')[1..] %>
         <div class="tui-dropdown-content">
           <ul>
-            <li><a href="<%= authenticate_path %>"><span class="red-168-text"><%= I18n.t('labels.sign_in')[0] %></span><%= I18n.t('labels.sign_in')[1..] %></a></li>
+            <li>
+              <a href="<%= authenticate_path %>"><span class="red-168-text"><%= I18n.t('labels.sign_in')[0] %></span><%= I18n.t('labels.sign_in')[1..] %>
+              </a></li>
           </ul>
         </div>
       </li>
@@ -49,7 +52,8 @@
       <div class="tui-dropdown-content">
         <ul>
           <li>
-            <a href="<%= change_locale_path(locale: I18n.t('labels.next_locale')) %>"><span class="red-168-text"><%= I18n.t('labels.next_locale')[0] %></span><%= I18n.t('labels.next_locale')[1..] %></a>
+            <a href="<%= change_locale_path(locale: I18n.t('labels.next_locale')) %>"><span class="red-168-text"><%= I18n.t('labels.next_locale')[0] %></span><%= I18n.t('labels.next_locale')[1..] %>
+            </a>
           </li>
         </ul>
       </div>
@@ -68,7 +72,9 @@
   <ul>
     <li><span class="red-168-text"><%= I18n.t('labels.svck_dev')[0] %></span><%= I18n.t('labels.svck_dev')[1..] %></li>
     <span class="tui-statusbar-divider"></span>
-    <li><span class="red-168-text"><%= I18n.t('labels.experiments_api')[0] %></span><%= I18n.t('labels.experiments_api')[1..] %></li>
+    <li>
+      <span class="red-168-text"><%= I18n.t('labels.experiments_api')[0] %></span><%= I18n.t('labels.experiments_api')[1..] %>
+    </li>
     <span class="tui-statusbar-divider"></span>
     <li><span class="red-168-text"><%= @year[0] %></span><%= @year[1..] %></li>
   </ul>
