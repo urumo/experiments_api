@@ -16,8 +16,11 @@ gem 'sprockets-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]
+  gem 'faker', '~> 3.2'
   gem 'rspec-rails', '~> 6.1'
-  gem 'rubocop', '~> 1.59'
+  gem 'rubocop', '1.57.2'
+  gem 'rubocop-rails', '2.22.2'
+  gem 'rubocop-rspec', '2.25.0'
 end
 group :development do
   gem 'rack-mini-profiler'

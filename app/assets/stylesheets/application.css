@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+@import "tui.css";
+
+html, body, nav {
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-body {
+    height: 97vh;
+    max-height: 100vh;
+    overflow: auto;
+    width: 100vw;
+}
+

@@ -1,0 +1,5 @@
+<% if current_user.admin? %>
+  <%= render 'admin/admin' %>
+<% else %>
+  <p>You are not an admin to view this page</p>
+<% end %>
