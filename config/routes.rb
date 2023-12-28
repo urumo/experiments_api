@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     match '/authenticate', to: 'admin#authenticate', via: %i[get post]
     match '/create_user', to: 'admin#create_user', via: %i[get post]
   end
+  get '/change_locale', to: 'application#change_locale', as: :change_locale
   get 'up' => 'rails/health#show', as: :rails_health_check
   root 'admin#index'
   mount Api::Engine, at: '/api'

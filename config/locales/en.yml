@@ -1,31 +1,42 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  labels:
+    stats: "Stats"
+    general: "General"
+    devices: "Devices"
+    total_devices: "total devices"
+    devices_with_experiments: "devices with experiments"
+    devices_without_experiments: "devices without experiments"
+    devices_with_registered_users: "devices with registered users"
+    completed_experiments: "completed experiments"
+    create_experiments: "Create experiments"
+    update_experiments: "Update experiments"
+    add_test_devices: "Add test devices"
+    add: "Create"
+    value_placeholder: "Value"
+    chance_placeholder: "0.1"
+    count_placeholder: "1"
+    complete_key: "complete %{key}"
+    key: "Key"
+    value: "Value"
+    amount: "Amount"
+    percent_of_total_devices: "Percent of total devices"
+    devices_with_this_key: "Devices with this key"
+    percent_of_devices_with_this_key: "% of devices with this key"
+    chance: "Chance"
+    completed: "Completed"
+    links: "Links"
+    home: "Home"
+    log_out: "Log Out"
+    identity: "Identity"
+    sign_in: "Sign In"
+    svck_dev: "svck.dev"
+    experiments_api: "experiments api"
+    locale: "Locale"
+    next_locale: "ru"
+    random_devices_without_experiments: "Random devices without experiments"
+    random_devices_with_experiments: "Random devices with experiments"
+    email: "Email................"
+    password: "Password......"
+    submit: "Submit"
+  messages:
+    not_admin: "You are not an admin to view this page"

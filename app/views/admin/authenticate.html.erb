@@ -1,19 +1,19 @@
 <div class="tui-window">
   <fieldset class="tui-fieldset">
-    <legend class="center">Sign In</legend>
+    <legend class="center"><%= I18n.t('labels.sign_in') %></legend>
     <%= form_with url: authenticate_path, method: :post do |form| %>
       <div>
-        <%= form.label :email %>................
+        <%= form.label :email, I18n.t('labels.email') %>
         <%= form.email_field :email, required: true, class: 'tui-input' %>
       </div>
 
       <div>
-        <%= form.label :password %>......
+        <%= form.label :password, I18n.t('labels.password') %>
         <%= form.password_field :password, required: true, class: 'tui-input' %>
       </div>
 
       <div>
-        <%= form.submit 'Submit', class: 'tui-button' %>
+        <%= form.submit I18n.t('labels.submit'), class: 'tui-button' %>
       </div>
     <% end %>
   </fieldset>

@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def change_locale
+    session[:locale] = params[:locale] || I18n.default_locale
+    I18n.locale = session[:locale]
+    redirect_to root_path
+  end
+
   private
 
   def show_notice(message)

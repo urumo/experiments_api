@@ -1,24 +1,153 @@
+<!--<table class="tui-table-grid main-table">-->
+<!--  <tbody>-->
+<!--  <tr>-->
+<!--    <td rowspan="2" height="90%">-->
+<!--      <div class="tui-window main-stats">-->
+<!--        <fieldset class="tui-fieldset">-->
+<!--          <legend>Stats</legend>-->
+<!--          <fieldset class="tui-fieldset">-->
+<!--            <legend>General</legend>-->
+<!--            <table class="tui-table">-->
+<!--              <thead>-->
+<!--              <tr>-->
+<!--                <th>Key</th>-->
+<!--                <th>Value</th>-->
+<!--                <th>Amount</th>-->
+<!--                <th>Total devices</th>-->
+<!--                <th>Percent of total devices</th>-->
+<!--                <th>Devices with this key</th>-->
+<!--                <th>% of devices with this key</th>-->
+<!--                <th>Chance</th>-->
+<!--                <th>Completed</th>-->
+<!--              </tr>-->
+<!--              </thead>-->
+<!--              <tbody>-->
+<%# Distribution.all.each do |distribution| %>
+<!--                <tr>-->
+<!--                  <td><%#= distribution.key %></td>-->
+<!--                  <td><%#= distribution.value %></td>-->
+<!--                  <td><%#= distribution.amount %></td>-->
+<!--                  <td><%#= distribution.total_devices %></td>-->
+<!--                  <td><%#= distribution.percent_of_total %>%</td>-->
+<!--                  <td><%#= distribution.key_devices %></td>-->
+<!--                  <td><%#= distribution.percent_of_key %>%</td>-->
+<!--                  <td><%#= distribution.chance %>%</td>-->
+<!--                  <td>-->
+<%#= Experiment.find(distribution.id).completed  %>
+<!--                  </td>-->
+<!--                </tr>-->
+<%# end %>
+<!--              </tbody>-->
+<!--            </table>-->
+<!--          </fieldset>-->
+<!--          <fieldset class="tui-fieldset">-->
+<!--            <legend>Devices</legend>-->
+<!--            <%#= Device.count %> total devices-->
+<!--            <hr class="tui-divider"></hr>-->
+<!--            <%#= Device.with_experiments.count %> devices with experiments-->
+<!--            <hr class="tui-divider"></hr>-->
+<!--            <%#= Device.without_experiments.count %> devices without experiments-->
+<!--            <hr class="tui-divider"></hr>-->
+<!--            <%#= Device.with_user.count %> devices with registered users-->
+<!--            <hr class="tui-divider"></hr>-->
+<!--            <%#= Experiment.completed.count %> completed experiments-->
+<!--          </fieldset>-->
+<!--        </fieldset>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--    <td width="30%" height="3%" class="center">-->
+<!--      <div class="tui-window main-experiment-create">-->
+<!--        <fieldset class="tui-fieldset">-->
+<!--          <legend>Create experiments</legend>-->
+<%#= form_with(url: create_experiment_path, method: "post", local: true) do |form| %>
+<!--            <div id="key-field">-->
+<%#= form.label :key %>
+<%#= form.text_field :key, class: 'tui-input' %>
+<!--            </div>-->
+
+<!--            <div id="value-chance-fields">-->
+<!--              <div id="value-chance-0">-->
+<%#= form.label :value_and_chance %>
+<%#= form.text_field :value, multiple: true, class: 'tui-input', placeholder: 'Value' %>
+<!--                <%#= form.number_field :chance, step: 0.1, multiple: true, class: 'tui-input', placeholder: '0.1' %>%-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <button type="button" class="tui-button" id="add-value-chance">+</button>-->
+
+<%#= form.submit 'Add', class: 'tui-button' %>
+<%# end %>
+
+<!--        </fieldset>-->
+<!--        <fieldset class="tui-fieldset">-->
+<!--          <legend>Update experiments</legend>-->
+<%# Experiment.not_completed.select(:key).uniq { |e| e.key }.each do |experiment| %>
+<%#= form_with(url: complete_experiment_path, method: :patch, local: true) do |form| %>
+<%#= form.hidden_field :key, value: experiment.key %>
+<%#= form.submit "complete #{experiment.key}", class: 'tui-button' %>
+<%# end %>
+<%# end %>
+<!--        </fieldset>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--  <tr>-->
+<!--    <td width="25" height="60%">-->
+<!--      <div class="tui-window main-experiment-create">-->
+<!--        <fieldset class="tui-fieldset">-->
+<!--          <legend>Add test devices</legend>-->
+<%#= form_with(url: add_test_devices_path, method: "post", local: true) do |form| %>
+<!--            <div id="key-field">-->
+<%#= form.label :amount %>
+
+<%#= form.number_field :count, step: 1, class: 'tui-input', placeholder: '1' %>
+<!--            </div>-->
+
+<%#= form.submit 'Add', class: 'tui-button' %>
+<%# end %>
+
+<!--        </fieldset>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--  <tr>-->
+<!--    <td height="3%" colspan="2">-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--<script>-->
+<!--    document.getElementById('add-value-chance').addEventListener('click', function () {-->
+<!--        const valueChanceFields = document.getElementById('value-chance-fields');-->
+<!--        const newValueChanceField = document.createElement('div');-->
+<!--        newValueChanceField.innerHTML = '<input type="text" name="value[]" multiple="true" class="tui-input" placeholder="Value">' +-->
+<!--            '<input type="number" step="0.1" name="chance[]" multiple="true" class="tui-input" placeholder="0.1">';-->
+<!--        valueChanceFields.appendChild(newValueChanceField);-->
+<!--    });-->
+<!--</script>-->
+
 <table class="tui-table-grid main-table">
   <tbody>
   <tr>
     <td rowspan="2" height="90%">
       <div class="tui-window main-stats">
         <fieldset class="tui-fieldset">
-          <legend>Stats</legend>
+          <legend><%= I18n.t('labels.stats') %></legend>
           <fieldset class="tui-fieldset">
-            <legend>General</legend>
+            <legend><%= I18n.t('labels.general') %></legend>
             <table class="tui-table">
               <thead>
               <tr>
-                <th>Key</th>
-                <th>Value</th>
-                <th>Amount</th>
-                <th>Total devices</th>
-                <th>Percent of total devices</th>
-                <th>Devices with this key</th>
-                <th>% of devices with this key</th>
-                <th>Chance</th>
-                <th>Completed</th>
+                <th><%= I18n.t('labels.key') %></th>
+                <th><%= I18n.t('labels.value') %></th>
+                <th><%= I18n.t('labels.amount') %></th>
+                <th><%= I18n.t('labels.total_devices') %></th>
+                <th><%= I18n.t('labels.percent_of_total_devices') %></th>
+                <th><%= I18n.t('labels.devices_with_this_key') %></th>
+                <th><%= I18n.t('labels.percent_of_devices_with_this_key') %></th>
+                <th><%= I18n.t('labels.chance') %></th>
+                <th><%= I18n.t('labels.completed') %></th>
               </tr>
               </thead>
               <tbody>
@@ -33,7 +162,7 @@
                   <td><%= distribution.percent_of_key %>%</td>
                   <td><%= distribution.chance %>%</td>
                   <td>
-                    <%= Experiment.find(distribution.id).completed  %>
+                    <%= Experiment.find(distribution.id).completed %>
                   </td>
                 </tr>
               <% end %>
@@ -41,16 +170,16 @@
             </table>
           </fieldset>
           <fieldset class="tui-fieldset">
-            <legend>Devices</legend>
-            <%= Device.count %> total devices
+            <legend><%= I18n.t('labels.devices') %></legend>
+            <%= Device.count %> <%= I18n.t('labels.total_devices') %>
             <hr class="tui-divider"></hr>
-            <%= Device.with_experiments.count %> devices with experiments
+            <%= Device.with_experiments.count %> <%= I18n.t('labels.devices_with_experiments') %>
             <hr class="tui-divider"></hr>
-            <%= Device.without_experiments.count %> devices without experiments
+            <%= Device.without_experiments.count %> <%= I18n.t('labels.devices_without_experiments') %>
             <hr class="tui-divider"></hr>
-            <%= Device.with_user.count %> devices with registered users
+            <%= Device.with_user.count %> <%= I18n.t('labels.devices_with_registered_users') %>
             <hr class="tui-divider"></hr>
-            <%= Experiment.completed.count %> completed experiments
+            <%= Experiment.completed.count %> <%= I18n.t('labels.completed_experiments') %>
           </fieldset>
         </fieldset>
       </div>
@@ -58,7 +187,7 @@
     <td width="30%" height="3%" class="center">
       <div class="tui-window main-experiment-create">
         <fieldset class="tui-fieldset">
-          <legend>Create experiments</legend>
+          <legend><%= I18n.t('labels.create_experiments') %></legend>
           <%= form_with(url: create_experiment_path, method: "post", local: true) do |form| %>
             <div id="key-field">
               <%= form.label :key %>
@@ -68,23 +197,24 @@
             <div id="value-chance-fields">
               <div id="value-chance-0">
                 <%= form.label :value_and_chance %>
-                <%= form.text_field :value, multiple: true, class: 'tui-input', placeholder: 'Value' %>
-                <%= form.number_field :chance, step: 0.1, multiple: true, class: 'tui-input', placeholder: '0.1' %>%
+                <%= form.text_field :value, multiple: true, class: 'tui-input', placeholder: I18n.t('labels.value_placeholder') %>
+                <%= form.number_field :chance, step: 0.1, multiple: true, class: 'tui-input', placeholder: I18n.t('labels.chance_placeholder') %>
+                %
               </div>
             </div>
 
             <button type="button" class="tui-button" id="add-value-chance">+</button>
 
-            <%= form.submit 'Add', class: 'tui-button' %>
+            <%= form.submit I18n.t('labels.add'), class: 'tui-button' %>
           <% end %>
 
         </fieldset>
         <fieldset class="tui-fieldset">
-          <legend>Update experiments</legend>
+          <legend><%= I18n.t('labels.update_experiments') %></legend>
           <% Experiment.not_completed.select(:key).uniq { |e| e.key }.each do |experiment| %>
             <%= form_with(url: complete_experiment_path, method: :patch, local: true) do |form| %>
               <%= form.hidden_field :key, value: experiment.key %>
-              <%= form.submit "complete #{experiment.key}", class: 'tui-button' %>
+              <%= form.submit I18n.t('labels.complete_key', key: experiment.key), class: 'tui-button' %>
             <% end %>
           <% end %>
         </fieldset>
@@ -95,17 +225,29 @@
     <td width="25" height="60%">
       <div class="tui-window main-experiment-create">
         <fieldset class="tui-fieldset">
-          <legend>Add test devices</legend>
+          <legend><%= I18n.t('labels.add_test_devices') %></legend>
           <%= form_with(url: add_test_devices_path, method: "post", local: true) do |form| %>
             <div id="key-field">
               <%= form.label :amount %>
 
-              <%= form.number_field :count, step: 1, class: 'tui-input', placeholder: '1' %>
+              <%= form.number_field :count, step: 1, class: 'tui-input', placeholder: I18n.t('labels.count_placeholder') %>
             </div>
 
-            <%= form.submit 'Add', class: 'tui-button' %>
+            <%= form.submit I18n.t('labels.add'), class: 'tui-button' %>
           <% end %>
 
+        </fieldset>
+        <fieldset class="tui-fieldset">
+          <legend><%= I18n.t('labels.random_devices_without_experiments') %></legend>
+          <% Device.without_experiments.sample(10).pluck(:id).each do |device| %>
+            <p><%= device %></p>
+          <% end %>
+        </fieldset>
+        <fieldset class="tui-fieldset">
+          <legend><%= I18n.t('labels.random_devices_with_experiments') %></legend>
+          <% Device.with_experiments.sample(10).pluck(:id).each do |device| %>
+            <p><%= device %></p>
+          <% end %>
         </fieldset>
       </div>
     </td>
@@ -121,8 +263,8 @@
     document.getElementById('add-value-chance').addEventListener('click', function () {
         const valueChanceFields = document.getElementById('value-chance-fields');
         const newValueChanceField = document.createElement('div');
-        newValueChanceField.innerHTML = '<input type="text" name="value[]" multiple="true" class="tui-input" placeholder="Value">' +
-            '<input type="number" step="0.1" name="chance[]" multiple="true" class="tui-input" placeholder="0.1">';
+        newValueChanceField.innerHTML = '<input type="text" name="value[]" multiple="true" class="tui-input" placeholder="<%= I18n.t('labels.value_placeholder') %>">' +
+            '<input type="number" step="0.1" name="chance[]" multiple="true" class="tui-input" placeholder="<%= I18n.t('labels.chance_placeholder') %>">';
         valueChanceFields.appendChild(newValueChanceField);
     });
 </script>
