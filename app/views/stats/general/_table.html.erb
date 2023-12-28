@@ -1,0 +1,35 @@
+<fieldset class="tui-fieldset">
+  <legend><%= I18n.t('labels.general') %></legend>
+  <table class="tui-table">
+    <thead>
+    <tr>
+      <th><%= I18n.t('labels.key') %></th>
+      <th><%= I18n.t('labels.value') %></th>
+      <th><%= I18n.t('labels.amount') %></th>
+      <th><%= I18n.t('labels.total_devices') %></th>
+      <th><%= I18n.t('labels.percent_of_total_devices') %></th>
+      <th><%= I18n.t('labels.devices_with_this_key') %></th>
+      <th><%= I18n.t('labels.percent_of_devices_with_this_key') %></th>
+      <th><%= I18n.t('labels.chance') %></th>
+      <th><%= I18n.t('labels.completed') %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% Distribution.all.each do |distribution| %>
+      <tr>
+        <td><%= distribution.key %></td>
+        <td><%= distribution.value %></td>
+        <td><%= distribution.amount %></td>
+        <td><%= distribution.total_devices %></td>
+        <td><%= distribution.percent_of_total %>%</td>
+        <td><%= distribution.key_devices %></td>
+        <td><%= distribution.percent_of_key %>%</td>
+        <td><%= distribution.chance %>%</td>
+        <td>
+          <%= Experiment.find(distribution.id).completed %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</fieldset>

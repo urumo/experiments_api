@@ -34,3 +34,23 @@ html, body, nav {
     width: 100vw;
 }
 
+.main-table {
+    width: 99vw;
+    height: 96vh;
+    border-collapse: collapse;
+}
+
+.main-stats {
+    width: 65vw;
+    height: 85vh;
+    max-height: 85vh;
+    overflow: auto;
+}
+
+.main-experiment-create {
+    width: 30vw;
+    height: 40vh;
+    max-height: 40vh;
+    max-width: 30vw;
+    overflow: auto;
+}

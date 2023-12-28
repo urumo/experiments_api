@@ -4,10 +4,27 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   add_flash_types :success, :warning, :danger, :info
 
+  rescue_from StandardError do |exception|
+    @error = [exception.class, exception.message]
+    @error << exception.backtrace[..5] if Rails.env.development?
+    respond_to do |format|
+      format.html { render template: 'error/error', status: :internal_server_error }
+      format.json do
+        render json: { error: }, status: :internal_server_error
+      end
+    end
+  end
+
+  def change_locale
+    session[:locale] = params[:locale] || I18n.default_locale
+    I18n.locale = session[:locale]
+    redirect_to root_path
+  end
+
   private
 
   def show_notice(message)
-    NotificationChannel.perform_later(session.id.to_s, message)
+    NotificationJob.perform_later(session.id.to_s, message)
   end
 
   before_action do

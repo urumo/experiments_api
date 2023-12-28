@@ -1,0 +1,27 @@
+<table class="tui-table-grid main-table">
+  <tbody>
+  <tr>
+    <td rowspan="2" height="90%">
+      <div class="tui-window main-stats">
+        <%= render 'stats/general' %>
+      </div>
+    </td>
+    <td width="30%" height="3%" class="center">
+      <div class="tui-window main-experiment-create">
+        <%= render 'stats/experiments' %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td width="25" height="60%">
+      <div class="tui-window main-experiment-create">
+        <%= render 'stats/devices' %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td height="3%" colspan="2">
+    </td>
+  </tr>
+  </tbody>
+</table>

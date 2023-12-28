@@ -1,0 +1,13 @@
+
+<fieldset class="tui-fieldset">
+  <legend><%= I18n.t('labels.devices') %></legend>
+  <%= Device.count %> <%= I18n.t('labels.total_devices') %>
+  <hr class="tui-divider"></hr>
+  <%= Device.with_experiments.count %> <%= I18n.t('labels.devices_with_experiments') %>
+  <hr class="tui-divider"></hr>
+  <%= Device.without_experiments.count %> <%= I18n.t('labels.devices_without_experiments') %>
+  <hr class="tui-divider"></hr>
+  <%= Device.with_user.count %> <%= I18n.t('labels.devices_with_registered_users') %>
+  <hr class="tui-divider"></hr>
+  <%= Experiment.completed.count %> <%= I18n.t('labels.completed_experiments') %>
+</fieldset>

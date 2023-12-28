@@ -3,12 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Admins' do
-  # describe 'GET /index' do
-  #   xit 'returns http success', 'this test keeps failing, so I skipped it until I get to implement the feature' do
-  #     get '/admin/index'
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe 'GET /' do
+    it 'returns http success', 'this test keeps failing, so I skipped it until I get to implement the feature' do
+      get '/admin'
+      expect(response).to have_http_status(:found)
+    end
+  end
 
   describe 'GET /authenticate' do
     it 'returns http success' do
@@ -17,9 +17,14 @@ RSpec.describe 'Admins' do
     end
   end
 
-  describe 'GET /create_user' do
-    it 'returns http success' do
+  describe '/create_user' do
+    it 'GET returns http success' do
       get '/admin/create_user'
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'POST returns http success' do
+      post '/admin/create_user'
       expect(response).to have_http_status(:success)
     end
   end

@@ -1,0 +1,5 @@
+<p><%= @error.first %></p>
+<p><%= @error[1] %></p>
+<% @error.last.each do |backtrace| %>
+  <p><%= backtrace %></p>
+<% end %>

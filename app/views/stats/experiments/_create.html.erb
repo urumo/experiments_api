@@ -1,0 +1,35 @@
+
+<fieldset class="tui-fieldset">
+  <legend><%= I18n.t('labels.create_experiments') %></legend>
+  <%= form_with(url: create_experiment_path, method: "post", local: true) do |form| %>
+    <div id="key-field">
+      <%= form.label :key %>
+      <%= form.text_field :key, class: 'tui-input' %>
+    </div>
+
+    <div id="value-chance-fields">
+      <div id="value-chance-0">
+        <%= form.label :value_and_chance %>
+        <%= form.text_field :value, multiple: true, class: 'tui-input', placeholder: I18n.t('labels.value_placeholder') %>
+        <%= form.number_field :chance, step: 0.1, multiple: true, class: 'tui-input', placeholder: I18n.t('labels.chance_placeholder') %>
+        %
+      </div>
+    </div>
+
+    <button type="button" class="tui-button" id="add-value-chance">+</button>
+
+    <%= form.submit I18n.t('labels.add'), class: 'tui-button' %>
+  <% end %>
+
+</fieldset>
+
+
+<script>
+    document.getElementById('add-value-chance').addEventListener('click', function () {
+        const valueChanceFields = document.getElementById('value-chance-fields');
+        const newValueChanceField = document.createElement('div');
+        newValueChanceField.innerHTML = '<input type="text" name="value[]" multiple="true" class="tui-input" placeholder="<%= I18n.t('labels.value_placeholder') %>">' +
+            '<input type="number" step="0.1" name="chance[]" multiple="true" class="tui-input" placeholder="<%= I18n.t('labels.chance_placeholder') %>">';
+        valueChanceFields.appendChild(newValueChanceField);
+    });
+</script>

@@ -1,0 +1,7 @@
+
+<fieldset class="tui-fieldset">
+  <legend><%= I18n.t('labels.random_devices_with_experiments') %></legend>
+  <% Device.with_experiments.sample(10).pluck(:id).each do |device| %>
+    <p><%= device %></p>
+  <% end %>
+</fieldset>

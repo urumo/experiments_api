@@ -34,21 +34,26 @@ jobs:
           POSTGRES_PASSWORD: password
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+      DB_USERNAME: rails
+      DB_PASSWORD: password
+      DB_HOST: localhost
+      CI_ENV: github-actions
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
         with:
           bundler-cache: true
       - name: Set up database schema
-        run: bin/rails db:schema:load
+        run: |
+          bundle exec rails db:prepare
+          bundle exec rails parallel:create
+          bundle exec rails parallel:prepare
       - name: Run tests
-        run: bundle exec rspec
+        run: bundle exec rails parallel:spec
   build_and_deploy:
-    needs: [lint, test]
+    needs: [ lint, test ]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
