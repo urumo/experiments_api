@@ -21,6 +21,7 @@ group :development, :test do
   gem 'faker', '~> 3.2'
   gem 'parallel_tests', '~> 4.4'
   gem 'rspec-rails', '~> 6.1'
+  gem 'rswag', '~> 2.13'
   gem 'rubocop', '1.57.2'
   gem 'rubocop-rails', '2.22.2'
   gem 'rubocop-rspec', '2.25.0'
@@ -30,3 +31,5 @@ group :development do
   gem 'spring'
   gem 'web-console'
 end
+
+gem 'rack-cors', '~> 2.0'

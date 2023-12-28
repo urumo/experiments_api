@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'swagger_helper'
 
 RSpec.describe 'Distributions' do
   let(:url) { '/api/distribution' }
@@ -39,6 +40,68 @@ RSpec.describe 'Distributions' do
         expect(body['device']['experiments'].size).to eq(1)
 
         expect(Experiment.pluck(:value)).to include(body['device']['experiments'][0]['value'])
+      end
+    end
+  end
+
+  path '/api/distribution' do
+    get 'Get distribution' do
+      tags 'Distribution'
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :device_token, in: :header, type: :string, required: true
+
+      response '200', 'distribution' do
+        schema type: :object,
+               properties: {
+                 device: {
+                   type: :object,
+                   properties: {
+                     device_token: { type: :string },
+                     user: {
+                       type: :object, 'x-nullable': true,
+                       properties: {
+                         id: { type: :string },
+                         email: { type: :string },
+                         role: { type: :string }
+                       }
+                     },
+                     experiments: {
+                       type: :array,
+                       items: {
+                         type: :object,
+                         properties: {
+                           key: { type: :string },
+                           value: { type: :string }
+                         },
+                         required: %w[key value]
+                       }
+                     }
+                   },
+                   required: %w[device_token experiments]
+                 }
+               }
+        let(:device_token) { SecureRandom.uuid }
+        run_test!
+      end
+
+      response '500', 'invalid request' do
+        schema type: :object,
+               properties: {
+                 error: {
+                   type: :object,
+                   properties: {
+                     error_type: { type: :string },
+                     error_message: { type: :string },
+                     error_backtrace: {
+                       type: :array,
+                       items: { type: :string }
+                     }
+                   }
+                 }
+               }
+        let(:device_token) { nil }
+        run_test!
       end
     end
   end

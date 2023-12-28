@@ -1,0 +1,82 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/distribution":
+    get:
+      summary: Get distribution
+      tags:
+      - Distribution
+      parameters:
+      - name: Device-Token
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: distribution
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  device:
+                    type: object
+                    properties:
+                      device_token:
+                        type: string
+                      user:
+                        type: object
+                        x-nullable: true
+                        properties:
+                          id:
+                            type: string
+                          email:
+                            type: string
+                          role:
+                            type: string
+                      experiments:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                          - key
+                          - value
+                    required:
+                    - device_token
+                    - experiments
+        '500':
+          description: invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      error_type:
+                        type: string
+                      error_message:
+                        type: string
+                      error_backtrace:
+                        type: array
+                        items:
+                          type: string
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: ab.svck.dev
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000
