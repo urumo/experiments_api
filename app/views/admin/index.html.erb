@@ -1,2 +1,5 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<% if current_user.admin? %>
+  <%= render 'admin/admin' %>
+<% else %>
+  <p>You are not an admin to view this page</p>
+<% end %>

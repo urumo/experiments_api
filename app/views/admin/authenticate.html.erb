@@ -1,0 +1,22 @@
+
+
+<div class="tui-window">
+  <fieldset class="tui-fieldset">
+    <legend class="center">Sign In</legend>
+    <%= form_with url: authenticate_path, method: :post do |form| %>
+      <div>
+        <%= form.label :email %>................
+        <%= form.email_field :email, required: true, class: 'tui-input' %>
+      </div>
+
+      <div>
+        <%= form.label :password %>......
+        <%= form.password_field :password, required: true, class: 'tui-input' %>
+      </div>
+
+      <div>
+        <%= form.submit 'Submit', class: 'tui-button' %>
+      </div>
+    <% end %>
+  </fieldset>
+</div>

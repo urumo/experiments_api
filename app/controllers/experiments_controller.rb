@@ -25,7 +25,10 @@ class ExperimentsController < ApplicationController
 
     respond_to do |format|
       if @experiment.save
-        format.html { redirect_to experiment_url(@experiment), notice: 'Experiment was successfully created.' }
+        format.html do
+          show_notice('Experiment was successfully created.')
+          redirect_to experiment_url(@experiment)
+        end
         format.json { render :show, status: :created, location: @experiment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +41,10 @@ class ExperimentsController < ApplicationController
   def update
     respond_to do |format|
       if @experiment.update(experiment_params)
-        format.html { redirect_to experiment_url(@experiment), notice: 'Experiment was successfully updated.' }
+        format.html do
+          show_notice('Experiment was successfully updated.')
+          redirect_to experiment_url(@experiment)
+        end
         format.json { render :show, status: :ok, location: @experiment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +58,10 @@ class ExperimentsController < ApplicationController
     @experiment.destroy!
 
     respond_to do |format|
-      format.html { redirect_to experiments_url, notice: 'Experiment was successfully destroyed.' }
+      format.html do
+        show_notice('Experiment was successfully destroyed.')
+        redirect_to experiments_url
+      end
       format.json { head :no_content }
     end
   end

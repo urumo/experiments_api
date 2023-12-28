@@ -7,6 +7,7 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag 'actioncable.js' %>
 </head>
 
 <body>
@@ -47,7 +48,9 @@
   </ul>
 </nav>
 
-<div class="tui-bg-blue-white main-body">
+<div class="tui-bg-blue-white main-body center">
+  <div id="notice">
+  </div>
   <%= yield %>
 </div>
 
@@ -61,6 +64,25 @@
   </ul>
 </div>
 </body>
+
+<script type=application/javascript>
+    const cable = ActionCable.createConsumer();
+    cable.subscriptions.create({
+            channel: 'NotificationChannel',
+            session_id: "<%= session.id %>"
+        },
+        {
+            received: function (data) {
+                const errorsDiv = document.querySelector('#notice');
+                const newError = document.createElement('p');
+                newError.textContent = data;
+                errorsDiv.appendChild(newError);
+                setTimeout(function() {
+                    errorsDiv.removeChild(newError);
+                }, 10000);
+            }
+        });
+</script>
 
 <script type=application/javascript>
     /**

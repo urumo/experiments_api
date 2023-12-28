@@ -2,8 +2,13 @@
 
 class ApplicationController < ActionController::Base
   helper_method :current_user
+  add_flash_types :success, :warning, :danger, :info
 
   private
+
+  def show_notice(message)
+    NotificationChannel.perform_later(session.id.to_s, message)
+  end
 
   before_action do
     year_created = '2023'
