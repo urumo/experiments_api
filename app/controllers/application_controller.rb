@@ -4,6 +4,17 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   add_flash_types :success, :warning, :danger, :info
 
+  rescue_from StandardError do |exception|
+    error = [exception.class, exception.message]
+    error << exception.backtrace[..5] if Rails.env.development?
+    respond_to do |format|
+      format.html { render template: 'error/error', status: :internal_server_error }
+      format.json do
+        render json: { error: }, status: :internal_server_error
+      end
+    end
+  end
+
   private
 
   def show_notice(message)
