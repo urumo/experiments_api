@@ -1,0 +1,10 @@
+
+<fieldset class="tui-fieldset">
+  <legend><%= I18n.t('labels.update_experiments') %></legend>
+  <% Experiment.not_completed.select(:key).uniq { |e| e.key }.each do |experiment| %>
+    <%= form_with(url: complete_experiment_path, method: :patch, local: true) do |form| %>
+      <%= form.hidden_field :key, value: experiment.key %>
+      <%= form.submit I18n.t('labels.complete_key', key: experiment.key), class: 'tui-button' %>
+    <% end %>
+  <% end %>
+</fieldset>

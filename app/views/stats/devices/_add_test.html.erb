@@ -1,0 +1,14 @@
+
+<fieldset class="tui-fieldset">
+  <legend><%= I18n.t('labels.add_test_devices') %></legend>
+  <%= form_with(url: add_test_devices_path, method: "post", local: true) do |form| %>
+    <div id="key-field">
+      <%= form.label :amount %>
+
+      <%= form.number_field :count, step: 1, class: 'tui-input', placeholder: I18n.t('labels.count_placeholder') %>
+    </div>
+
+    <%= form.submit I18n.t('labels.add'), class: 'tui-button' %>
+  <% end %>
+
+</fieldset>
