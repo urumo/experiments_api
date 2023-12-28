@@ -10,6 +10,14 @@ class Device < ApplicationRecord
   scope :with_experiments, -> { joins(:device_experiments).distinct }
   scope :without_experiments, -> { where.missing(:device_experiments) }
 
+  def as_dto
+    {
+      device_token: id,
+      user: user&.as_dto,
+      experiments: experiments.map(&:as_dto)
+    }
+  end
+
   after_create :assign_experiment
 
   private
