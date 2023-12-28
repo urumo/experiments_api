@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :warning, :danger, :info
 
   rescue_from StandardError do |exception|
-    error = [exception.class, exception.message]
-    error << exception.backtrace[..5] if Rails.env.development?
+    @error = [exception.class, exception.message]
+    @error << exception.backtrace[..5] if Rails.env.development?
     respond_to do |format|
       format.html { render template: 'error/error', status: :internal_server_error }
       format.json do
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   private
 
   def show_notice(message)
-    NotificationChannel.perform_later(session.id.to_s, message)
+    NotificationJob.perform_later(session.id.to_s, message)
   end
 
   before_action do

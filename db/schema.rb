@@ -55,18 +55,29 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_030353) do
   add_foreign_key "devices", "users"
 
   create_view "distributions", sql_definition: <<-SQL
-      SELECT e.key,
+      SELECT e.id,
+      e.key,
       e.value,
       count(e.value) AS amount,
       total_devices.count AS total_devices,
-      round((((count(e.value))::numeric * 100.0) / (total_devices.count)::numeric), 3) AS actual_percent,
+      round((((count(e.value))::numeric * 100.0) / (total_devices.count)::numeric), 3) AS percent_of_total,
+      key_devices.count AS key_devices,
+      round((((count(e.value))::numeric * 100.0) / (key_devices.count)::numeric), 3) AS percent_of_key,
       e.chance
      FROM ((devices d
        LEFT JOIN device_experiments de ON ((d.id = de.device_id)))
        LEFT JOIN experiments e ON ((de.experiment_id = e.id))),
       ( SELECT count(*) AS count
-             FROM devices) total_devices
-    GROUP BY e.key, e.value, e.chance, total_devices.count
+             FROM devices) total_devices,
+      ( SELECT e_1.key,
+              count(*) AS count
+             FROM ((devices d_1
+               LEFT JOIN device_experiments de_1 ON ((d_1.id = de_1.device_id)))
+               LEFT JOIN experiments e_1 ON ((de_1.experiment_id = e_1.id)))
+            WHERE (e_1.key IS NOT NULL)
+            GROUP BY e_1.key) key_devices
+    WHERE ((e.key IS NOT NULL) AND ((e.key)::text = (key_devices.key)::text))
+    GROUP BY e.key, e.value, e.chance, total_devices.count, key_devices.count, e.id
     ORDER BY e.chance DESC;
   SQL
 end

@@ -4,7 +4,7 @@ default: &default
   username: <%= ENV.fetch('DB_USERNAME', '') %>
   password: <%= ENV.fetch('DB_PASSWORD', '') %>
   host: <%= ENV.fetch('DB_HOST', 'localhost') %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 150 } %>
 
 development:
   <<: *default

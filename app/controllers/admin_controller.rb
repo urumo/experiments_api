@@ -20,6 +20,33 @@ class AdminController < ApplicationController
 
   def create_user; end
 
+  def create_experiment
+    key = params[:key]
+
+    params[:value].each_with_index do |value, index|
+      chance = params[:chance][index]
+      Experiment.create!(key:, value:, chance:)
+    end
+
+    redirect_to root_url
+  rescue StandardError => e
+    show_notice(e.message)
+  end
+
+  def complete_experiment
+    Experiment.where(key: params[:key]).update(completed: true)
+    redirect_to root_url
+  rescue StandardError => e
+    show_notice(e.message)
+  end
+
+  def add_test_devices
+    AddTestDevicesJob.perform_later(session.id.to_s, params[:count].to_i)
+    redirect_to root_url
+  rescue StandardError => e
+    show_notice(e.message)
+  end
+
   def logout
     reset_session
     redirect_to root_path
