@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_27_210314) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_28_030353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_210314) do
     t.float "chance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "completed", default: false, null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -52,4 +53,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_210314) do
   add_foreign_key "device_experiments", "devices"
   add_foreign_key "device_experiments", "experiments"
   add_foreign_key "devices", "users"
+
+  create_view "distributions", sql_definition: <<-SQL
+      SELECT e.key,
+      e.value,
+      count(e.value) AS amount,
+      total_devices.count AS total_devices,
+      round((((count(e.value))::numeric * 100.0) / (total_devices.count)::numeric), 3) AS actual_percent,
+      e.chance
+     FROM ((devices d
+       LEFT JOIN device_experiments de ON ((d.id = de.device_id)))
+       LEFT JOIN experiments e ON ((de.experiment_id = e.id))),
+      ( SELECT count(*) AS count
+             FROM devices) total_devices
+    GROUP BY e.key, e.value, e.chance, total_devices.count
+    ORDER BY e.chance DESC;
+  SQL
 end

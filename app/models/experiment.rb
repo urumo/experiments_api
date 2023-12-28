@@ -6,4 +6,5 @@ class Experiment < ApplicationRecord
 
   scope :with_devices, -> { joins(:device_experiments).distinct }
   scope :without_devices, -> { where.missing(:device_experiments) }
+  scope :not_completed, -> { where(completed: false) }
 end
