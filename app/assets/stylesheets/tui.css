@@ -9,6 +9,7 @@
     font-family: "DOS";
     src: url("./dos2000-ru-en.ttf");
 }
+
 /* Global Definitions */
 html {
     font-family: "DOS", "monospace";
@@ -64,19 +65,19 @@ input, select, textarea {
 /* Responsive */
 /* Scrool */
 /* Grid */
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width: 600px) {
     .hide-on-small-only, .hide-on-small-and-down {
         display: none !important;
     }
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
     .hide-on-med-and-down {
         display: none !important;
     }
 }
 
-@media only screen and (min-width : 601px) {
+@media only screen and (min-width: 601px) {
     .hide-on-med-and-up {
         display: none !important;
     }
@@ -88,25 +89,25 @@ input, select, textarea {
     }
 }
 
-@media only screen and (min-width : 993px) {
+@media only screen and (min-width: 993px) {
     .hide-on-large-only {
         display: none !important;
     }
 }
 
-@media only screen and (min-width : 1201px) {
+@media only screen and (min-width: 1201px) {
     .hide-on-extra-large-only {
         display: none !important;
     }
 }
 
-@media only screen and (min-width : 1201px) {
+@media only screen and (min-width: 1201px) {
     .show-on-extra-large {
         display: block !important;
     }
 }
 
-@media only screen and (min-width : 993px) {
+@media only screen and (min-width: 993px) {
     .show-on-large {
         display: block !important;
     }
@@ -118,19 +119,19 @@ input, select, textarea {
     }
 }
 
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width: 600px) {
     .show-on-small {
         display: block !important;
     }
 }
 
-@media only screen and (min-width : 601px) {
+@media only screen and (min-width: 601px) {
     .show-on-medium-and-up {
         display: block !important;
     }
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
     .show-on-medium-and-down {
         display: block !important;
     }
@@ -896,6 +897,7 @@ input, select, textarea {
     -moz-user-select: none;
     -ms-user-select: none;
 }
+
 .tui-button.disabled {
     text-decoration: line-through;
 }
@@ -932,6 +934,7 @@ input[type=button] {
     -moz-user-select: none;
     -ms-user-select: none;
 }
+
 .tui-checkbox.disabled {
     color: rgb(168, 168, 168);
 }
@@ -1016,6 +1019,7 @@ input[type=button] {
     background-color: inherit;
     margin-bottom: 6px;
 }
+
 .tui-fieldset.no-legend {
     margin-top: 6px;
 }
@@ -1058,10 +1062,12 @@ input[type=button] {
     -moz-user-select: none;
     -ms-user-select: none;
 }
+
 .tui-fieldset-button.left {
     right: initial;
     left: 16px !important;
 }
+
 .tui-fieldset-button.bottom {
     bottom: 0px;
     top: initial;
@@ -1076,10 +1082,12 @@ input[type=button] {
     z-index: 2;
     padding: 2px;
 }
+
 .tui-fieldset-text.right {
     left: initial;
     right: 16px;
 }
+
 .tui-fieldset-text.top {
     top: 0px;
     bottom: initial;
@@ -1104,6 +1112,7 @@ input[type=button] {
     border: none;
     border-radius: 0px;
 }
+
 .tui-input.disabled {
     background-color: rgb(168, 168, 168);
     color: black;
@@ -1205,6 +1214,7 @@ input[type=button] {
         margin-left: 100%;
     }
 }
+
 /* Font (Options: 'Lucida Console' or 'DOS') */
 /* Characters */
 /* Theme */
@@ -1223,6 +1233,7 @@ input[type=button] {
     -moz-user-select: none;
     -ms-user-select: none;
 }
+
 .tui-radio.disabled {
     color: rgb(168, 168, 168);
 }
@@ -1281,6 +1292,7 @@ input[type=button] {
 .tui-scroll-blue ::-webkit-scrollbar-thumb {
     background-color: rgb(0, 0, 168);
 }
+
 .tui-scroll-blue ::-webkit-scrollbar-thumb:hover {
     background-color: rgb(0, 0, 168);
 }
@@ -1288,6 +1300,7 @@ input[type=button] {
 .tui-scroll-green ::-webkit-scrollbar-thumb {
     background-color: rgb(0, 168, 0);
 }
+
 .tui-scroll-green ::-webkit-scrollbar-thumb:hover {
     background-color: rgb(0, 168, 0);
 }
@@ -1295,6 +1308,7 @@ input[type=button] {
 .tui-scroll-cyan ::-webkit-scrollbar-thumb {
     background-color: rgb(0, 168, 168);
 }
+
 .tui-scroll-cyan ::-webkit-scrollbar-thumb:hover {
     background-color: rgb(0, 168, 168);
 }
@@ -1302,6 +1316,7 @@ input[type=button] {
 .tui-scroll-red ::-webkit-scrollbar-thumb {
     background-color: rgb(168, 0, 0);
 }
+
 .tui-scroll-red ::-webkit-scrollbar-thumb:hover {
     background-color: rgb(168, 0, 0);
 }
@@ -1309,6 +1324,7 @@ input[type=button] {
 .tui-scroll-purple ::-webkit-scrollbar-thumb {
     background-color: rgb(168, 0, 168);
 }
+
 .tui-scroll-purple ::-webkit-scrollbar-thumb:hover {
     background-color: rgb(168, 0, 168);
 }
@@ -1316,6 +1332,7 @@ input[type=button] {
 .tui-scroll-yellow ::-webkit-scrollbar-thumb {
     background-color: rgb(168, 168, 0);
 }
+
 .tui-scroll-yellow ::-webkit-scrollbar-thumb:hover {
     background-color: rgb(168, 168, 0);
 }
@@ -1323,6 +1340,7 @@ input[type=button] {
 .tui-scroll-white ::-webkit-scrollbar-thumb {
     background-color: rgb(168, 168, 168);
 }
+
 .tui-scroll-white ::-webkit-scrollbar-thumb:hover {
     background-color: rgb(168, 168, 168);
 }
@@ -1340,10 +1358,12 @@ input[type=button] {
     z-index: 8;
     display: none;
 }
+
 .tui-sidenav.right {
     left: initial;
     right: 0px;
 }
+
 .tui-sidenav.active {
     display: block !important;
 }
@@ -1420,64 +1440,81 @@ input[type=button] {
     padding: 5px;
     border-collapse: collapse;
 }
+
 .tui-table.hovered-blue tbody tr:hover {
     background-color: rgb(0, 0, 255) !important;
     color: black;
 }
+
 .tui-table.hovered-green tbody tr:hover {
     background-color: rgb(0, 255, 0) !important;
     color: black;
 }
+
 .tui-table.hovered-cyan tbody tr:hover {
     background-color: rgb(0, 255, 255) !important;
     color: black;
 }
+
 .tui-table.hovered-red tbody tr:hover {
     background-color: rgb(255, 0, 0) !important;
     color: white;
 }
+
 .tui-table.hovered-purple tbody tr:hover {
     background-color: rgb(255, 0, 255) !important;
     color: white;
 }
+
 .tui-table.hovered-yellow tbody tr:hover {
     background-color: rgb(255, 255, 0) !important;
     color: black;
 }
+
 .tui-table.hovered-white tbody tr:hover {
     background-color: rgb(255, 255, 255) !important;
     color: black;
 }
+
 .tui-table.hovered-orange tbody tr:hover {
     background-color: rgb(255, 168, 0) !important;
     color: black;
 }
+
 .tui-table.hovered tbody tr:hover {
     background-color: rgb(0, 255, 255) !important;
     color: black;
 }
+
 .tui-table.striped-blue tbody tr:nth-child(even) {
     background-color: rgb(0, 0, 168);
 }
+
 .tui-table.striped-green tbody tr:nth-child(even) {
     background-color: rgb(0, 168, 0);
 }
+
 .tui-table.striped-cyan tbody tr:nth-child(even) {
     background-color: rgb(0, 168, 168);
 }
+
 .tui-table.striped-red tbody tr:nth-child(even) {
     background-color: rgb(168, 0, 0);
 }
+
 .tui-table.striped-purple tbody tr:nth-child(even) {
     background-color: rgb(168, 0, 168);
 }
+
 .tui-table.striped-yellow tbody tr:nth-child(even) {
     background-color: rgb(168, 168, 0);
 }
+
 .tui-table.striped-white tbody tr:nth-child(even) {
     background-color: rgb(168, 168, 168);
     color: black;
 }
+
 .tui-table.striped-orange tbody tr:nth-child(even) {
     background-color: rgb(168, 86, 0);
 }
@@ -1542,10 +1579,12 @@ input[type=button] {
     color: rgb(168, 168, 168);
     cursor: pointer;
 }
+
 .tui-tab.active {
     background-color: rgb(168, 168, 168);
     color: rgb(0, 0, 168);
 }
+
 .tui-tab.disabled {
     text-decoration: line-through;
 }
@@ -1561,6 +1600,7 @@ input[type=button] {
     color: rgb(255, 255, 0);
     outline: none;
 }
+
 .tui-textarea.disabled {
     background-color: rgb(168, 168, 168);
     color: black;
@@ -1596,11 +1636,13 @@ input[type=button] {
     position: relative;
     overflow: hidden;
 }
+
 .tui-screen-640-480.bordered,
 .tui-screen-800-600.bordered,
 .tui-screen-1024-768.bordered {
     border: 2px solid black;
 }
+
 .tui-screen-640-480.centered,
 .tui-screen-800-600.centered,
 .tui-screen-1024-768.centered {
@@ -1700,16 +1742,18 @@ input[type=button] {
     width: 90%;
 }
 
-@media only screen and (min-width : 601px) {
+@media only screen and (min-width: 601px) {
     .container {
         width: 85%;
     }
 }
-@media only screen and (min-width : 993px) {
+
+@media only screen and (min-width: 993px) {
     .container {
         width: 70%;
     }
 }
+
 .col .row {
     margin-left: -0.75rem;
     margin-right: -0.75rem;
@@ -1719,12 +1763,15 @@ input[type=button] {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
 .section.no-pad {
     padding: 0;
 }
+
 .section.no-pad-bot {
     padding-bottom: 0;
 }
+
 .section.no-pad-top {
     padding-top: 0;
 }
@@ -1734,742 +1781,937 @@ input[type=button] {
     margin-right: auto;
     margin-bottom: 20px;
 }
+
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
+
 .row .col {
     float: left;
     box-sizing: border-box;
     padding: 0 0.75rem;
     min-height: 1px;
 }
+
 .row .col[class*=push-], .row .col[class*=pull-] {
     position: relative;
 }
+
 .row .col.s1 {
     width: 8.3333333333%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.s2 {
     width: 16.6666666667%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.s3 {
     width: 25%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.s4 {
     width: 33.3333333333%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.s5 {
     width: 41.6666666667%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.s6 {
     width: 50%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.s7 {
     width: 58.3333333333%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.s8 {
     width: 66.6666666667%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.s9 {
     width: 75%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.s10 {
     width: 83.3333333333%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.s11 {
     width: 91.6666666667%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.s12 {
     width: 100%;
     margin-left: auto;
     left: auto;
     right: auto;
 }
+
 .row .col.offset-s1 {
     margin-left: 8.3333333333%;
 }
+
 .row .col.pull-s1 {
     right: 8.3333333333%;
 }
+
 .row .col.push-s1 {
     left: 8.3333333333%;
 }
+
 .row .col.offset-s2 {
     margin-left: 16.6666666667%;
 }
+
 .row .col.pull-s2 {
     right: 16.6666666667%;
 }
+
 .row .col.push-s2 {
     left: 16.6666666667%;
 }
+
 .row .col.offset-s3 {
     margin-left: 25%;
 }
+
 .row .col.pull-s3 {
     right: 25%;
 }
+
 .row .col.push-s3 {
     left: 25%;
 }
+
 .row .col.offset-s4 {
     margin-left: 33.3333333333%;
 }
+
 .row .col.pull-s4 {
     right: 33.3333333333%;
 }
+
 .row .col.push-s4 {
     left: 33.3333333333%;
 }
+
 .row .col.offset-s5 {
     margin-left: 41.6666666667%;
 }
+
 .row .col.pull-s5 {
     right: 41.6666666667%;
 }
+
 .row .col.push-s5 {
     left: 41.6666666667%;
 }
+
 .row .col.offset-s6 {
     margin-left: 50%;
 }
+
 .row .col.pull-s6 {
     right: 50%;
 }
+
 .row .col.push-s6 {
     left: 50%;
 }
+
 .row .col.offset-s7 {
     margin-left: 58.3333333333%;
 }
+
 .row .col.pull-s7 {
     right: 58.3333333333%;
 }
+
 .row .col.push-s7 {
     left: 58.3333333333%;
 }
+
 .row .col.offset-s8 {
     margin-left: 66.6666666667%;
 }
+
 .row .col.pull-s8 {
     right: 66.6666666667%;
 }
+
 .row .col.push-s8 {
     left: 66.6666666667%;
 }
+
 .row .col.offset-s9 {
     margin-left: 75%;
 }
+
 .row .col.pull-s9 {
     right: 75%;
 }
+
 .row .col.push-s9 {
     left: 75%;
 }
+
 .row .col.offset-s10 {
     margin-left: 83.3333333333%;
 }
+
 .row .col.pull-s10 {
     right: 83.3333333333%;
 }
+
 .row .col.push-s10 {
     left: 83.3333333333%;
 }
+
 .row .col.offset-s11 {
     margin-left: 91.6666666667%;
 }
+
 .row .col.pull-s11 {
     right: 91.6666666667%;
 }
+
 .row .col.push-s11 {
     left: 91.6666666667%;
 }
+
 .row .col.offset-s12 {
     margin-left: 100%;
 }
+
 .row .col.pull-s12 {
     right: 100%;
 }
+
 .row .col.push-s12 {
     left: 100%;
 }
-@media only screen and (min-width : 601px) {
+
+@media only screen and (min-width: 601px) {
     .row .col.m1 {
         width: 8.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.m2 {
         width: 16.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.m3 {
         width: 25%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.m4 {
         width: 33.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.m5 {
         width: 41.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.m6 {
         width: 50%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.m7 {
         width: 58.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.m8 {
         width: 66.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.m9 {
         width: 75%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.m10 {
         width: 83.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.m11 {
         width: 91.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.m12 {
         width: 100%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.offset-m1 {
         margin-left: 8.3333333333%;
     }
+
     .row .col.pull-m1 {
         right: 8.3333333333%;
     }
+
     .row .col.push-m1 {
         left: 8.3333333333%;
     }
+
     .row .col.offset-m2 {
         margin-left: 16.6666666667%;
     }
+
     .row .col.pull-m2 {
         right: 16.6666666667%;
     }
+
     .row .col.push-m2 {
         left: 16.6666666667%;
     }
+
     .row .col.offset-m3 {
         margin-left: 25%;
     }
+
     .row .col.pull-m3 {
         right: 25%;
     }
+
     .row .col.push-m3 {
         left: 25%;
     }
+
     .row .col.offset-m4 {
         margin-left: 33.3333333333%;
     }
+
     .row .col.pull-m4 {
         right: 33.3333333333%;
     }
+
     .row .col.push-m4 {
         left: 33.3333333333%;
     }
+
     .row .col.offset-m5 {
         margin-left: 41.6666666667%;
     }
+
     .row .col.pull-m5 {
         right: 41.6666666667%;
     }
+
     .row .col.push-m5 {
         left: 41.6666666667%;
     }
+
     .row .col.offset-m6 {
         margin-left: 50%;
     }
+
     .row .col.pull-m6 {
         right: 50%;
     }
+
     .row .col.push-m6 {
         left: 50%;
     }
+
     .row .col.offset-m7 {
         margin-left: 58.3333333333%;
     }
+
     .row .col.pull-m7 {
         right: 58.3333333333%;
     }
+
     .row .col.push-m7 {
         left: 58.3333333333%;
     }
+
     .row .col.offset-m8 {
         margin-left: 66.6666666667%;
     }
+
     .row .col.pull-m8 {
         right: 66.6666666667%;
     }
+
     .row .col.push-m8 {
         left: 66.6666666667%;
     }
+
     .row .col.offset-m9 {
         margin-left: 75%;
     }
+
     .row .col.pull-m9 {
         right: 75%;
     }
+
     .row .col.push-m9 {
         left: 75%;
     }
+
     .row .col.offset-m10 {
         margin-left: 83.3333333333%;
     }
+
     .row .col.pull-m10 {
         right: 83.3333333333%;
     }
+
     .row .col.push-m10 {
         left: 83.3333333333%;
     }
+
     .row .col.offset-m11 {
         margin-left: 91.6666666667%;
     }
+
     .row .col.pull-m11 {
         right: 91.6666666667%;
     }
+
     .row .col.push-m11 {
         left: 91.6666666667%;
     }
+
     .row .col.offset-m12 {
         margin-left: 100%;
     }
+
     .row .col.pull-m12 {
         right: 100%;
     }
+
     .row .col.push-m12 {
         left: 100%;
     }
 }
-@media only screen and (min-width : 993px) {
+
+@media only screen and (min-width: 993px) {
     .row .col.l1 {
         width: 8.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.l2 {
         width: 16.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.l3 {
         width: 25%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.l4 {
         width: 33.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.l5 {
         width: 41.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.l6 {
         width: 50%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.l7 {
         width: 58.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.l8 {
         width: 66.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.l9 {
         width: 75%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.l10 {
         width: 83.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.l11 {
         width: 91.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.l12 {
         width: 100%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.offset-l1 {
         margin-left: 8.3333333333%;
     }
+
     .row .col.pull-l1 {
         right: 8.3333333333%;
     }
+
     .row .col.push-l1 {
         left: 8.3333333333%;
     }
+
     .row .col.offset-l2 {
         margin-left: 16.6666666667%;
     }
+
     .row .col.pull-l2 {
         right: 16.6666666667%;
     }
+
     .row .col.push-l2 {
         left: 16.6666666667%;
     }
+
     .row .col.offset-l3 {
         margin-left: 25%;
     }
+
     .row .col.pull-l3 {
         right: 25%;
     }
+
     .row .col.push-l3 {
         left: 25%;
     }
+
     .row .col.offset-l4 {
         margin-left: 33.3333333333%;
     }
+
     .row .col.pull-l4 {
         right: 33.3333333333%;
     }
+
     .row .col.push-l4 {
         left: 33.3333333333%;
     }
+
     .row .col.offset-l5 {
         margin-left: 41.6666666667%;
     }
+
     .row .col.pull-l5 {
         right: 41.6666666667%;
     }
+
     .row .col.push-l5 {
         left: 41.6666666667%;
     }
+
     .row .col.offset-l6 {
         margin-left: 50%;
     }
+
     .row .col.pull-l6 {
         right: 50%;
     }
+
     .row .col.push-l6 {
         left: 50%;
     }
+
     .row .col.offset-l7 {
         margin-left: 58.3333333333%;
     }
+
     .row .col.pull-l7 {
         right: 58.3333333333%;
     }
+
     .row .col.push-l7 {
         left: 58.3333333333%;
     }
+
     .row .col.offset-l8 {
         margin-left: 66.6666666667%;
     }
+
     .row .col.pull-l8 {
         right: 66.6666666667%;
     }
+
     .row .col.push-l8 {
         left: 66.6666666667%;
     }
+
     .row .col.offset-l9 {
         margin-left: 75%;
     }
+
     .row .col.pull-l9 {
         right: 75%;
     }
+
     .row .col.push-l9 {
         left: 75%;
     }
+
     .row .col.offset-l10 {
         margin-left: 83.3333333333%;
     }
+
     .row .col.pull-l10 {
         right: 83.3333333333%;
     }
+
     .row .col.push-l10 {
         left: 83.3333333333%;
     }
+
     .row .col.offset-l11 {
         margin-left: 91.6666666667%;
     }
+
     .row .col.pull-l11 {
         right: 91.6666666667%;
     }
+
     .row .col.push-l11 {
         left: 91.6666666667%;
     }
+
     .row .col.offset-l12 {
         margin-left: 100%;
     }
+
     .row .col.pull-l12 {
         right: 100%;
     }
+
     .row .col.push-l12 {
         left: 100%;
     }
 }
-@media only screen and (min-width : 1201px) {
+
+@media only screen and (min-width: 1201px) {
     .row .col.xl1 {
         width: 8.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.xl2 {
         width: 16.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.xl3 {
         width: 25%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.xl4 {
         width: 33.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.xl5 {
         width: 41.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.xl6 {
         width: 50%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.xl7 {
         width: 58.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.xl8 {
         width: 66.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.xl9 {
         width: 75%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.xl10 {
         width: 83.3333333333%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.xl11 {
         width: 91.6666666667%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.xl12 {
         width: 100%;
         margin-left: auto;
         left: auto;
         right: auto;
     }
+
     .row .col.offset-xl1 {
         margin-left: 8.3333333333%;
     }
+
     .row .col.pull-xl1 {
         right: 8.3333333333%;
     }
+
     .row .col.push-xl1 {
         left: 8.3333333333%;
     }
+
     .row .col.offset-xl2 {
         margin-left: 16.6666666667%;
     }
+
     .row .col.pull-xl2 {
         right: 16.6666666667%;
     }
+
     .row .col.push-xl2 {
         left: 16.6666666667%;
     }
+
     .row .col.offset-xl3 {
         margin-left: 25%;
     }
+
     .row .col.pull-xl3 {
         right: 25%;
     }
+
     .row .col.push-xl3 {
         left: 25%;
     }
+
     .row .col.offset-xl4 {
         margin-left: 33.3333333333%;
     }
+
     .row .col.pull-xl4 {
         right: 33.3333333333%;
     }
+
     .row .col.push-xl4 {
         left: 33.3333333333%;
     }
+
     .row .col.offset-xl5 {
         margin-left: 41.6666666667%;
     }
+
     .row .col.pull-xl5 {
         right: 41.6666666667%;
     }
+
     .row .col.push-xl5 {
         left: 41.6666666667%;
     }
+
     .row .col.offset-xl6 {
         margin-left: 50%;
     }
+
     .row .col.pull-xl6 {
         right: 50%;
     }
+
     .row .col.push-xl6 {
         left: 50%;
     }
+
     .row .col.offset-xl7 {
         margin-left: 58.3333333333%;
     }
+
     .row .col.pull-xl7 {
         right: 58.3333333333%;
     }
+
     .row .col.push-xl7 {
         left: 58.3333333333%;
     }
+
     .row .col.offset-xl8 {
         margin-left: 66.6666666667%;
     }
+
     .row .col.pull-xl8 {
         right: 66.6666666667%;
     }
+
     .row .col.push-xl8 {
         left: 66.6666666667%;
     }
+
     .row .col.offset-xl9 {
         margin-left: 75%;
     }
+
     .row .col.pull-xl9 {
         right: 75%;
     }
+
     .row .col.push-xl9 {
         left: 75%;
     }
+
     .row .col.offset-xl10 {
         margin-left: 83.3333333333%;
     }
+
     .row .col.pull-xl10 {
         right: 83.3333333333%;
     }
+
     .row .col.push-xl10 {
         left: 83.3333333333%;
     }
+
     .row .col.offset-xl11 {
         margin-left: 91.6666666667%;
     }
+
     .row .col.pull-xl11 {
         right: 91.6666666667%;
     }
+
     .row .col.push-xl11 {
         left: 91.6666666667%;
     }
+
     .row .col.offset-xl12 {
         margin-left: 100%;
     }
+
     .row .col.pull-xl12 {
         right: 100%;
     }
+
     .row .col.push-xl12 {
         left: 100%;
     }
@@ -2483,6 +2725,7 @@ input[type=button] {
     z-index: 101;
     display: none;
 }
+
 .tui-modal.active {
     display: block !important;
 }
@@ -2496,6 +2739,7 @@ input[type=button] {
     z-index: 100;
     display: none;
 }
+
 .tui-overlap.active {
     display: block !important;
 }
@@ -2523,9 +2767,11 @@ input[type=button] {
     border-bottom: 2px solid white;
     border-left: 2px solid white;
 }
+
 .tui-chart-vertical .tui-chart-display.no-x-axis {
     bottom: 0px;
 }
+
 .tui-chart-vertical .tui-chart-display.no-y-axis {
     left: 0px;
 }
@@ -2542,9 +2788,11 @@ input[type=button] {
     border-bottom: 2px solid white;
     border-left: 2px solid white;
 }
+
 .tui-chart-horizontal .tui-chart-display.no-x-axis {
     bottom: 0px;
 }
+
 .tui-chart-horizontal .tui-chart-display.no-y-axis {
     left: 0px;
 }
