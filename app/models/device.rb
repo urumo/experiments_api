@@ -14,7 +14,7 @@ class Device < ApplicationRecord
     {
       device_token: id,
       user: user&.as_dto,
-      experiments: experiments.map(&:as_dto)
+      experiments: experiments.map(&:as_dto) # ideally this should be compressed with gzip and encoded in base 64
     }
   end
 

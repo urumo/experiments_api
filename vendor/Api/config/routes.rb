@@ -1,3 +1,5 @@
 Api::Engine.routes.draw do
-  get 'distribution/index'
+  scope :distribution do
+    get '/', to: 'distribution#index', as: :distribution
+  end
 end
