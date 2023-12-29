@@ -15,24 +15,24 @@ RSpec.describe Distribution do
       Experiment.create!(key: 'experiment_1', value: 'h', chance: 10)
       Experiment.create!(key: 'experiment_1', value: 'i', chance: 10)
       Experiment.create!(key: 'experiment_1', value: 'j', chance: 10)
-      2000.times { Device.create! }
+      100.times { Device.create! }
       expect(
         described_class
           .find_by(key: 'experiment_1', value: 'a')
           .percent_of_key.to_f
-      ).to be_between(8, 12).inclusive
+      ).to be(10.0)
     end
 
     it 'has +- 33.3% actual distribution' do
       Experiment.create!(key: 'experiment_1', value: 'a', chance: 33.3)
       Experiment.create!(key: 'experiment_1', value: 'b', chance: 33.3)
       Experiment.create!(key: 'experiment_1', value: 'c', chance: 33.3)
-      2000.times { Device.create! }
+      60.times { Device.create! }
       expect(
         described_class
           .find_by(key: 'experiment_1', value: 'a')
           .percent_of_key.to_f
-      ).to be_between(31, 36).inclusive
+      ).to be(33.333)
     end
   end
 end
