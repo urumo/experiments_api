@@ -18,8 +18,10 @@ gem 'scenic', '~> 1.7'
 gem 'sprockets-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 group :development, :test do
+  gem 'database_cleaner-active_record'
   gem 'debug', platforms: %i[mri windows]
   gem 'faker', '~> 3.2'
+  gem 'parallel'
   gem 'parallel_tests', '~> 4.4'
   gem 'rspec-rails', '~> 6.1'
   gem 'rubocop', '1.57.2'

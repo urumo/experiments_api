@@ -17,6 +17,36 @@ RSpec.describe 'Distributions' do
     context 'with Device-Token header' do
       let(:device_id) { SecureRandom.uuid }
 
+      it 'returns exact distribution for sequential case' do
+        Experiment.create(key: 'button_color', value: '#FF0000', chance: 33.3)
+        Experiment.create(key: 'button_color', value: '#00FF00', chance: 33.3)
+        Experiment.create(key: 'button_color', value: '#0000FF', chance: 33.3)
+        tokens = Array.new(600) { SecureRandom.uuid }
+        results = tokens.map do |token|
+          get(url, headers: { 'Device-Token' => token })
+          response.body
+        end
+
+        parsed = results.map { |result| JSON.parse(result) }
+        counts = parsed.group_by { |i| i.dig('device', 'experiments', 0, 'value') }.values.map(&:size)
+        expect(counts).to all(be_eql(200))
+      end
+
+      it 'returns exact distribution for parallel case' do
+        Experiment.create(key: 'button_color', value: '#FF0000', chance: 33.3)
+        Experiment.create(key: 'button_color', value: '#00FF00', chance: 33.3)
+        Experiment.create(key: 'button_color', value: '#0000FF', chance: 33.3)
+        tokens = Array.new(600) { SecureRandom.uuid }
+        results = Parallel.map(tokens, in_processes: 4) do |token|
+          get(url, headers: { 'Device-Token' => token })
+          response.body
+        end
+
+        parsed = results.map { |result| JSON.parse(result) }
+        counts = parsed.group_by { |i| i.dig('device', 'experiments', 0, 'value') }.values.map(&:size)
+        expect(counts).to all(be_eql(200))
+      end
+
       it 'returns device as dto' do
         get url, headers: { 'Device-Token' => device_id }
         expect(response).to have_http_status(:ok)

@@ -6,14 +6,15 @@ x-rails-env: &rails-env
   SECRET_KEY_BASE_DUMMY: 1
 
 x-rails-app: &rails-app
-  platform: linux/x86_64 # to be able to run virtually everywhere
-  image: ghcr.io/urumo/experiments_api/experiments_api:latest
+  #platform: linux/x86_64 # to be able to run virtually everywhere
   build:
     context: .
     dockerfile: Dockerfile
   restart: unless-stopped
   tty: true
   stdin_open: true
+  volumes:
+    - .:/rails
   environment:
     <<: *rails-env
   depends_on:
