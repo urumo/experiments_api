@@ -19,18 +19,18 @@ experiment, the client receives:
 
 ## Solution
 
-The solution is actually pretty simple. We can
-use [Weighted random distribution algorithm](https://dev.to/jacktt/understanding-the-weighted-random-algorithm-581p#:~:text=Simple%20Explanation,in%20which%20this%20point%20falls.)
-to take care of everything.
+The solution is actually pretty simple. I used round robin method to distribute the experiments between the devices.
 The algorithm is pretty simple:
 
 1. We have a list of experiments with their weights(chances).
-2. We generate a random number from 0 to the sum of all weights.
-3. We iterate through the list of experiments and subtract the weight of the current experiment from the random number.
-4. If the random number is less than 0, we return the current experiment.
-5. If the random number is greater than 0, we continue iterating.
+2. We check to see if there is already an experiment with the current experiment key on the device, if there is we skip
+   this specific experiment.
+3. If we don't have any experiments with the current experiment key on other devices than we assign the current
+   experiment to the device.
+4. We check if the current experiment is fulfilled or over fulfilled by devices, if it is we skip it.
+5. If not experiment was assigned to the device we assign a random experiment with the same key to the device.
 
-This way we can get a random experiment with a chance proportional to its weight with a slight spread.
+This way we can get a random experiment with a chance proportional to its weight up to 0.001% precision.
 
 As for showing the statistics I decided to use SQL [Views](/db/views/distributions_v01.sql) to make it easier to query
 the data.

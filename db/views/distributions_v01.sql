@@ -6,7 +6,8 @@ select e.id,
        round((count(e.value) * 100.0 / total_devices.count), 3) as percent_of_total,
        key_devices.count                                        as key_devices,
        round((count(e.value) * 100.0 / key_devices.count), 3)   as percent_of_key,
-       e.chance
+       e.chance,
+       now()                                                    as created_at
 from devices d
          left join device_experiments de on d.id = de.device_id
          left join experiments e on de.experiment_id = e.id,
