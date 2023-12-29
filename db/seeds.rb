@@ -29,9 +29,14 @@ return if ci_env == 'github-actions'
 # Experiment.create!(key: 'experiment_1', value: 'i', chance: 10)
 # Experiment.create!(key: 'experiment_1', value: 'j', chance: 10)
 #
-# Experiment.create!(key: 'experiment_2', value: 'a', chance: 33.3)
-# Experiment.create!(key: 'experiment_2', value: 'b', chance: 33.3)
-# Experiment.create!(key: 'experiment_2', value: 'c', chance: 33.3)
+Experiment.create!(key: 'experiment_2', value: 'a', chance: 33.3)
+Experiment.create!(key: 'experiment_2', value: 'b', chance: 33.3)
+Experiment.create!(key: 'experiment_2', value: 'c', chance: 33.3)
+
+Experiment.create!(key: 'experiment_3', value: 'a', chance: 10)
+Experiment.create!(key: 'experiment_3', value: 'b', chance: 20)
+Experiment.create!(key: 'experiment_3', value: 'b', chance: 30)
+Experiment.create!(key: 'experiment_3', value: 'c', chance: 40)
 #
 # 2.times.map do
 #   Thread.new do

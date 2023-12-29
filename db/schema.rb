@@ -63,7 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_030353) do
       round((((count(e.value))::numeric * 100.0) / (total_devices.count)::numeric), 3) AS percent_of_total,
       key_devices.count AS key_devices,
       round((((count(e.value))::numeric * 100.0) / (key_devices.count)::numeric), 3) AS percent_of_key,
-      e.chance
+      e.chance,
+      now() AS created_at
      FROM ((devices d
        LEFT JOIN device_experiments de ON ((d.id = de.device_id)))
        LEFT JOIN experiments e ON ((de.experiment_id = e.id))),

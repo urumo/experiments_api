@@ -22,37 +22,40 @@ class Device < ApplicationRecord
 
   private
 
-  # Assigns an experiment to a device based on their chance value.
-  #
-  # This method selects experiments from the not_completed experiment collection
-  # based on their chance value. The experiments are grouped by their keys.
-  # If the device does not already have an experiment with the same key,
-  # a selected experiment is created for the device.
-  #
-  # Returns: nil
   def assign_experiment
-    # https://dev.to/jacktt/understanding-the-weighted-random-algorithm-581p#:~:text=The%20weighted%20random%20algorithm%20is,greater%20chance%20of%20being%20chosen.
-    grouped_experiments = Experiment.not_completed.order(chance: :desc).group_by(&:key)
-    grouped_experiments.each do |experiment_key, experiments|
-      next if self.experiments.exists?(key: experiment_key)
+    Experiment.lock.transaction do
+      grouped_experiments = Experiment.not_completed.order(chance: :asc).group_by(&:key)
 
-      selected_experiment = select_experiment_based_on_chance(experiments)
-      device_experiments.create(experiment: selected_experiment) if selected_experiment
+      find_and_assign_experiment(grouped_experiments)
     end
   end
 
-  # Select an experiment based on their chance value.
-  #
-  # experiments - An Array of Experiment objects.
-  #
-  # Returns the selected Experiment object.
-  def select_experiment_based_on_chance(experiments)
-    total_chance = experiments.sum(&:chance)
-    random = rand(0..total_chance)
+  def find_and_assign_experiment(grouped_experiments)
+    grouped_experiments.each do |experiment_key, experiments_array|
+      next if experiments.exists?(key: experiment_key)
 
-    experiments.find do |experiment|
-      random -= experiment.chance
-      random <= 0
+      handle_experiments(experiments_array)
     end
+  end
+
+  def handle_experiments(experiments_array)
+    experiments_array.each_with_index do |experiment, index|
+      distribution = Distribution.find_by(key: experiment.key, value: experiment.value)
+      if distribution.nil?
+        device_experiments.create!(experiment:)
+        break
+      end
+
+      next if distribution.percent_of_key.to_f >= experiment.chance && index != experiments_array.size - 1
+
+      assign_random_experiment(experiments_array, experiment)
+      break
+    end
+  end
+
+  def assign_random_experiment(experiments_array, experiment)
+    unfulfilled_experiment = Distribution.where(key: experiment.key).not_fulfilled.first&.experiment
+    experiment = unfulfilled_experiment || experiments_array.sample
+    device_experiments.create!(experiment:)
   end
 end
